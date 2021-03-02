@@ -19,6 +19,7 @@ public class AnalisisNoRecursivo {
     private Stack pila;
     private String descripcionError = "";
     private FilaColumnaTabla filCol = new FilaColumnaTabla();
+    private String resultado;
 
     public AnalisisNoRecursivo(ArrayList lexemas, String[][] tabla) {
         this.lexemas = lexemas;
@@ -56,7 +57,7 @@ public class AnalisisNoRecursivo {
                     apuntado++;
                 } else {
                     System.out.println("Error 1");
-                    descripcionError = "El elemento '" + datoApuntado + "' no se ha encontrado";
+                    descripcionError = "El elemento '" + datoApuntado + "' no se ha encontrado.";
                     error = true;
                 }
             } else {
@@ -69,12 +70,12 @@ public class AnalisisNoRecursivo {
                         insertarProduccion(tabla[fila][columna], datoApuntado, datoPila);
                     } else {
                         System.out.println("aAAAA");
-                        descripcionError = "La secuencia es incorrecta";
+                        descripcionError = "La secuencia es incorrecta o existen elementos faltantes.";
                         error = true;
                     }
                 } else {
-                    System.out.println("Dato en tabla inexistentes");
-                    descripcionError = "El elemento no se reconoce";
+                    System.out.println("Dato en tabla inexistentes.");
+                    descripcionError = "El elemento no se reconoce.";
                     error = true;
                 }
             }
@@ -123,10 +124,16 @@ public class AnalisisNoRecursivo {
         if (pila.isEmpty()) {
             System.out.println("Correcto");
             //txtResultado.setText("La cadena es correcta");
+            resultado = "La entrada analizada es correcta.";
         } else {
             System.out.println("Incorrecto");
             //txtResultado.setText("La cadena es incorrecta\n" + descripcionError);
+            resultado = "La entrada analizada es incorrecta.\n" + descripcionError;
         }
+    }
+    
+    public String getResultado(){
+        return resultado;
     }
 
     public void mostrarEvolucionPila(Stack pila) {
