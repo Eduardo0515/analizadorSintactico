@@ -48,7 +48,6 @@ public class AnalisisNoRecursivo {
             datoPila = pila.lastElement().toString();
             datoApuntado = lexemas.get(apuntado).toString();
             mostrarEvolucionPila(pila);
-            System.out.println(datoApuntado + " " + datoPila + " *************");
             if (filCol.isTerminal(datoPila)) {
                 if (datoPila.equals("ε")) {
                     pila.pop();
@@ -69,7 +68,6 @@ public class AnalisisNoRecursivo {
                         pila.pop();
                         insertarProduccion(tabla[fila][columna], datoApuntado, datoPila);
                     } else {
-                        System.out.println("aAAAA");
                         descripcionError = "La secuencia es incorrecta o existen elementos faltantes.";
                         error = true;
                     }
